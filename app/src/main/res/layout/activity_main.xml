@@ -27,7 +27,7 @@
                     android:id="@+id/textView9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Welcome"
+                    android:text="Xin chào"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -75,7 +75,7 @@
                         android:layout_weight="1"
                         android:background="@color/grey"
                         android:ems="10"
-                        android:hint="Search Food..."
+                        android:hint="Tìm kiếm..."
                         android:inputType="text"
                         android:padding="8dp"
                         android:textAlignment="center"
@@ -213,7 +213,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                   android:textColor="@color/red"
-                    android:text="VIEW ALL" />
+                    android:text="TẤT CẢ" />
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -249,7 +249,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="DANH MUC"
+                android:text="DANH MỤC"
                 android:layout_marginTop="16dp"
                 android:textColor="@color/blue_grey"
                 android:textSize="22dp"
