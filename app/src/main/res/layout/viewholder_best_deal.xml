@@ -30,7 +30,7 @@
 
             <TextView
                 android:id="@+id/titleTxt"
-                android:layout_width="230px"
+                android:layout_width="220px"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
                 android:ellipsize="end"
@@ -103,12 +103,10 @@
                 android:id="@+id/priceTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
                 android:layout_marginEnd="8dp"
                 android:text="$0"
                 android:textColor="@color/red"
-                android:textSize="18sp"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/titleTxt"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -14,6 +14,7 @@ import com.example.project162.Helper.ManagmentCart;
 import com.example.project162.R;
 import com.example.project162.databinding.ActivityCartBinding;
 
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Locale;
 
@@ -61,7 +62,7 @@ public class CartActivity extends BaseActivity {
 
     private void calculateCart() {
         double percentTax = 0.02; //percent 2% tax
-        double delivery = 10; // 10 Dollar
+        double delivery = 10000; // 10000 VND
 
         tax = Math.round(managmentCart.getTotalFee() * percentTax * 100.0) / 100;
 
@@ -75,9 +76,11 @@ public class CartActivity extends BaseActivity {
     }
 
     private String formatCurrency(double amount) {
-        NumberFormat formatter = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
-        return formatter.format(amount); // Trả về chuỗi đã định dạng
+        DecimalFormat df = new DecimalFormat("#,###");
+        String formattedAmount = df.format(amount); // Định dạng số tiền
+        return formattedAmount + " VND"; // Thêm "VND" vào cuối
     }
+
     private void setVariable() {
         binding.backBtn.setOnClickListener(v -> finish());
     }

@@ -18,7 +18,7 @@
             <ImageView
                 android:id="@+id/imageView4"
                 android:layout_width="match_parent"
-                android:layout_height="600px"
+                android:layout_height="500px"
                 android:layout_marginTop="0px"
 
                 app:srcCompat="@drawable/logo_fastfood" />
@@ -27,7 +27,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:layout_marginTop="16dp"
                 android:orientation="horizontal">
 
                 <TextView
