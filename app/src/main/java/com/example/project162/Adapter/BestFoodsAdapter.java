@@ -18,7 +18,10 @@ import com.example.project162.Activity.DetailActivity;
 import com.example.project162.Domain.Foods;
 import com.example.project162.R;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class BestFoodsAdapter extends RecyclerView.Adapter<BestFoodsAdapter.viewholder> {
     ArrayList<Foods> items;
@@ -40,10 +43,16 @@ public class BestFoodsAdapter extends RecyclerView.Adapter<BestFoodsAdapter.view
         this.context = context;
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull BestFoodsAdapter.viewholder holder, int position) {
+        Foods food = items.get(position);
+
+        DecimalFormat df = new DecimalFormat("#,###");
+        String formattedPrice = df.format(food.getPrice()) + " VND";
+
         holder.titleTxt.setText(items.get(position).getTitle());
-        holder.priceTxt.setText("$" + items.get(position).getPrice());
+        holder.priceTxt.setText(formattedPrice);
         holder.timeTxt.setText(items.get(position).getTimeValue() + " min");
         holder.starTxt.setText("" + items.get(position).getStar());
 

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import com.example.project162.Adapter.CartAdapter;
 import com.example.project162.Helper.ChangeNumberItemsListener;
@@ -13,12 +14,15 @@ import com.example.project162.Helper.ManagmentCart;
 import com.example.project162.R;
 import com.example.project162.databinding.ActivityCartBinding;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class CartActivity extends BaseActivity {
     private ActivityCartBinding binding;
     private RecyclerView.Adapter adapter;
     private ManagmentCart managmentCart;
     private double tax;
-
+    Button button2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +34,14 @@ public class CartActivity extends BaseActivity {
         setVariable();
         calculateCart();
         initList();
+
+        binding.button2.setOnClickListener(v -> {
+            managmentCart.clearCart(() -> {
+                initList();     // Cập nhật danh sách
+                calculateCart(); // Cập nhật tổng phí
+            });
+        });
+
     }
 
     private void initList() {
@@ -56,13 +68,18 @@ public class CartActivity extends BaseActivity {
         double total = Math.round((managmentCart.getTotalFee() + tax + delivery) * 100) / 100;
         double itemTotal = Math.round(managmentCart.getTotalFee() * 100) / 100;
 
-        binding.totalFeeTxt.setText("$" + itemTotal);
-        binding.taxTxt.setText("$" + tax);
-        binding.deliveryTxt.setText("$" + delivery);
-        binding.totalTxt.setText("$" + total);
+        binding.totalFeeTxt.setText(formatCurrency(itemTotal));
+        binding.taxTxt.setText(formatCurrency(tax));
+        binding.deliveryTxt.setText(formatCurrency(delivery));
+        binding.totalTxt.setText(formatCurrency(total));
     }
 
+    private String formatCurrency(double amount) {
+        NumberFormat formatter = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
+        return formatter.format(amount); // Trả về chuỗi đã định dạng
+    }
     private void setVariable() {
         binding.backBtn.setOnClickListener(v -> finish());
     }
+
 }

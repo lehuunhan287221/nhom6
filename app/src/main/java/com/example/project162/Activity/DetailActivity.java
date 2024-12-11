@@ -11,6 +11,8 @@ import com.example.project162.Helper.ManagmentCart;
 import com.example.project162.R;
 import com.example.project162.databinding.ActivityDetailBinding;
 
+import java.text.DecimalFormat;
+
 public class DetailActivity extends BaseActivity {
     ActivityDetailBinding binding;
     private Foods object;
@@ -37,24 +39,31 @@ public class DetailActivity extends BaseActivity {
                 .load(object.getImagePath())
                 .into(binding.pic);
 
-        binding.priceTxt.setText("$" + object.getPrice());
+        // Format price
+        DecimalFormat df = new DecimalFormat("#,###");
+        String formattedPrice = df.format(object.getPrice()) + " VND";
+        binding.priceTxt.setText(formattedPrice);
+
+        // Set other details
         binding.titleTxt.setText(object.getTitle());
         binding.descriptionTxt.setText(object.getDescription());
-        binding.rateTxt.setText(object.getStar() + " Rating");
+        binding.rateTxt.setText(object.getStar() + " Sao");
         binding.ratingBar.setRating((float) object.getStar());
-        binding.totalTxt.setText((num * object.getPrice() + "$"));
+
+        // Format total price
+        updateTotalPrice();
 
         binding.plusBtn.setOnClickListener(v -> {
             num = num + 1;
-            binding.numTxt.setText(num + " ");
-            binding.totalTxt.setText("$" + (num * object.getPrice()));
+            binding.numTxt.setText(String.valueOf(num));
+            updateTotalPrice();
         });
 
         binding.minusBtn.setOnClickListener(v -> {
             if (num > 1) {
                 num = num - 1;
-                binding.numTxt.setText(num + "");
-                binding.totalTxt.setText("$" + (num * object.getPrice()));
+                binding.numTxt.setText(String.valueOf(num));
+                updateTotalPrice();
             }
         });
 
@@ -63,7 +72,12 @@ public class DetailActivity extends BaseActivity {
             managmentCart.insertFood(object);
         });
     }
-
+    private void updateTotalPrice() {
+        // Format total price with thousands separator
+        DecimalFormat df = new DecimalFormat("#,###");
+        String formattedTotal = df.format(num * object.getPrice()) + " VND";
+        binding.totalTxt.setText(formattedTotal);
+    }
     private void getIntentExtra() {
         object = (Foods) getIntent().getSerializableExtra("object");
     }

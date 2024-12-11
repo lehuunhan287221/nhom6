@@ -35,7 +35,7 @@ public class ManagmentCart {
             listpop.add(item);
         }
         tinyDB.putListObject("CartList",listpop);
-        Toast.makeText(context, "Added to your Cart", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "Đã thêm vào giỏ hàng của bạn", Toast.LENGTH_SHORT).show();
     }
 
     public ArrayList<Foods> getListCart() {
@@ -64,4 +64,13 @@ public class ManagmentCart {
         tinyDB.putListObject("CartList",listItem);
         changeNumberItemsListener.change();
     }
+
+    public void clearCart(ChangeNumberItemsListener changeNumberItemsListener) {
+        tinyDB.putListObject("CartList", new ArrayList<>());
+        Toast.makeText(context, "Đã đặt hàng thành công", Toast.LENGTH_SHORT).show();
+        if (changeNumberItemsListener != null) {
+            changeNumberItemsListener.change();
+        }
+    }
+
 }

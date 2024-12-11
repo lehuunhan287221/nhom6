@@ -18,10 +18,10 @@
             <ImageView
                 android:id="@+id/imageView4"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
-
-                app:srcCompat="@drawable/logo" />
+                android:layout_height="600px"
+                android:layout_marginTop="0dp"
+                app:srcCompat="@drawable/logo_fastfood"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"

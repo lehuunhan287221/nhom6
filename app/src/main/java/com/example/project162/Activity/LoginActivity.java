@@ -36,11 +36,11 @@ public class LoginActivity extends BaseActivity {
                     if(task.isSuccessful()){
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     }else{
-                        Toast.makeText(LoginActivity.this, "Authentication failed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Email hoặc mật khẩu không đúng", Toast.LENGTH_SHORT).show();
                     }
                 });
             }else{
-                Toast.makeText(LoginActivity.this, "Please fill username and password", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Vui lòng điền email hoặc mật khẩu", Toast.LENGTH_SHORT).show();
             }
         });
 

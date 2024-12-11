@@ -18,6 +18,7 @@ import com.example.project162.Helper.ChangeNumberItemsListener;
 import com.example.project162.Helper.ManagmentCart;
 import com.example.project162.R;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.viewholder> {
@@ -40,11 +41,17 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.viewholder> {
 
     @Override
     public void onBindViewHolder(@NonNull CartAdapter.viewholder holder, int position) {
-        holder.title.setText(list.get(position).getTitle());
-        holder.feeEachItem.setText("$"+(list.get(position).getNumberInCart()*list.get(position).getPrice()));
-        holder.totalEachItem.setText(list.get(position).getNumberInCart()+" * $"+(
-                list.get(position).getPrice()));
-        holder.num.setText(list.get(position).getNumberInCart()+"");
+        Foods food = list.get(position);
+
+        // Định dạng giá tiền
+        DecimalFormat df = new DecimalFormat("#,###");
+        String formattedFeeEachItem = df.format(food.getNumberInCart() * food.getPrice()) + " VND";
+        String formattedTotalEachItem = food.getNumberInCart() + " * " + df.format(food.getPrice()) + " VND";
+
+        holder.title.setText(food.getTitle());
+        holder.feeEachItem.setText(formattedFeeEachItem);
+        holder.totalEachItem.setText(formattedTotalEachItem);
+        holder.num.setText(String.valueOf(food.getNumberInCart()));
 
         Glide.with(holder.itemView.getContext())
                 .load(list.get(position).getImagePath())
