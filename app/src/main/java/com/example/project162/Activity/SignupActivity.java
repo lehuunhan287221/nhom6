@@ -47,5 +47,12 @@ public class SignupActivity extends BaseActivity {
                 }
             });
         });
+        binding.btnDangNhap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+            }
+        });
     }
+
 }

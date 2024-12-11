@@ -36,7 +36,7 @@ public class CartActivity extends BaseActivity {
         calculateCart();
         initList();
 
-        binding.button2.setOnClickListener(v -> {
+        binding.buttonOder.setOnClickListener(v -> {
             managmentCart.clearCart(() -> {
                 initList();     // Cập nhật danh sách
                 calculateCart(); // Cập nhật tổng phí
